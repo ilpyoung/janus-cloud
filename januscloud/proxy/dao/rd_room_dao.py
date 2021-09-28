@@ -38,6 +38,7 @@ class RDRoomDao(object):
         self._redis_client.delete(*room_key_list)
 
     def add(self, room):
+        log.warning("hihihihihihihihihihi")
         room_key = self._key_room(room.room_id)
         with self._redis_client.pipeline() as p:
             p.hmset(
