@@ -39,7 +39,7 @@ class RDRoomDao(object):
         for room in room_list:
             room_key_list.append(self._key_room(room.room_id))
 
-        if len(room_key_list) == 0 
+        if len(room_key_list) == 0:
             return None
 
         self._redis_client.delete(*room_key_list)
