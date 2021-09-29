@@ -1677,6 +1677,7 @@ class VideoRoomManager(object):
         return len(self._rooms_map)
 
     def create(self, room_id=0, permanent=False, admin_key='', room_params={}):
+        log.warning("Video Room Create Start!!")
         if permanent and self._room_dao is None:
             raise JanusCloudError('permanent not support',
                                   JANUS_VIDEOROOM_ERROR_INVALID_REQUEST)
@@ -1688,6 +1689,7 @@ class VideoRoomManager(object):
                 raise JanusCloudError('Unauthorized (wrong {})'.format('admin_key'),
                                       JANUS_VIDEOROOM_ERROR_UNAUTHORIZED)
 
+        log.warning("Video Room Create Process...1!!")
         if room_id == 0:
             room_id = random_uint64()
             while room_id in self._rooms_map:
@@ -1706,8 +1708,9 @@ class VideoRoomManager(object):
         if not new_room.is_private:
             self._public_rooms_list.append(new_room)
 
+        log.warning("Video Room Create Process...2!!")
         # debug print the new room info
-        log.debug('Created videoroom: {0} ({1}, private: {2}, {3}/{4} codecs, secret: {5}, pin: {6}, pvtid:{7})'.format(
+        log.warning('Created videoroom: {0} ({1}, private: {2}, {3}/{4} codecs, secret: {5}, pin: {6}, pvtid:{7})'.format(
             new_room.room_id, new_room.description, new_room.is_private,
             new_room.audiocodec, new_room.videocodec,
             new_room.secret, new_room.pin, new_room.require_pvtid
@@ -1725,6 +1728,7 @@ class VideoRoomManager(object):
             except Exception as e:
                 log.warning('Fail to add room to DB: {}'.format(e))
 
+        log.warning("Video Room Create Success..!!")
         return new_room, saved
 
     def update(self, room_id, secret='', permanent=False,
