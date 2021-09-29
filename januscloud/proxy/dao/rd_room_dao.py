@@ -18,6 +18,7 @@ class RDRoomDao(object):
         self._redis_client.client_getname()     # test the connection if available or not
 
     def get_by_room_id(self, room_id):
+        log.warning("Video Room Redis GET ROOM ID!!")
         try:
             rd_room = self._redis_client.hgetall(self._key_room(room_id))
             if rd_room:
@@ -29,16 +30,18 @@ class RDRoomDao(object):
             return None
 
     def del_by_room_id(self, room_id):
+        log.warning("Video Room Redis DEL ROOM ID!!")
         self._redis_client.delete(self._key_room(room_id))
 
     def del_by_list(self, room_list):
+        log.warning("Video Room Redis DEL LIST!!")
         room_key_list = []
         for room in room_list:
             room_key_list.append(self._key_room(room.room_id))
         self._redis_client.delete(*room_key_list)
 
     def add(self, room):
-        log.warning("hihihihihihihihihihi")
+        log.warning("Video Room Redis ADD!!")
         room_key = self._key_room(room.room_id)
         with self._redis_client.pipeline() as p:
             p.hmset(
@@ -48,6 +51,7 @@ class RDRoomDao(object):
             p.execute()
 
     def update(self, room):
+        log.warning("Video Room Redis UPDATE!!")
         room_key = self._key_room(room.room_id)
         with self._redis_client.pipeline() as p:
             p.hmset(
@@ -57,6 +61,7 @@ class RDRoomDao(object):
             p.execute()
 
     def get_list(self):
+        log.warning("Video Room Redis GET LIST!!")
         room_list = []
         try:
             room_key_list = self._redis_client.keys(pattern='januscloud:video_rooms:*')
