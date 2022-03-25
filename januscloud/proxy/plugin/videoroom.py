@@ -2386,8 +2386,8 @@ class VideoRoomHandle(FrontendHandleBase):
                         backend_server = self._plugin.backend_server_mgr.choose_server(self._session.ts)
                         if backend_server is None:
                             raise JanusCloudError('No backend server available', JANUS_ERROR_BAD_GATEWAY)
-                        if request == 'joinandconfigure':
-                            room.check_max_publishers()
+                        # if request == 'joinandconfigure':
+                        room.check_max_publishers()
 
                         new_publisher = room.new_participant(
                             user_id=join_params.get('id', 0),
