@@ -1646,10 +1646,7 @@ class VideoRoom(object):
                                   JANUS_VIDEOROOM_ERROR_UNAUTHORIZED)
         return self
 
-    def check_max_publishers(self, display):
-        if display.startswith('video-company-viewer-'):
-            return self
-
+    def check_max_publishers(self):
         log.warning('check_max_publishers process start{}'.format(self.publishers))
         count = 0
         participant_list = list(self._participants.values())
@@ -2387,7 +2384,8 @@ class VideoRoomHandle(FrontendHandleBase):
                         if backend_server is None:
                             raise JanusCloudError('No backend server available', JANUS_ERROR_BAD_GATEWAY)
                         # if request == 'joinandconfigure':
-                        room.check_max_publishers()
+                        if join_params.get('display', '').startswith('video-company-viewer')
+                            room.check_max_publishers()
 
                         new_publisher = room.new_participant(
                             user_id=join_params.get('id', 0),
