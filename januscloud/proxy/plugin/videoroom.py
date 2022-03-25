@@ -1647,9 +1647,9 @@ class VideoRoom(object):
         return self
 
     def check_max_publishers(self, display):
-        if display.startswith('video-company-viewer-')
+        if display.startswith('video-company-viewer-'):
             return self
-            
+
         count = 0
         for publisher in self._participants.values():
             count += 1
