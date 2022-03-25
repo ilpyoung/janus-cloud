@@ -1646,7 +1646,10 @@ class VideoRoom(object):
                                   JANUS_VIDEOROOM_ERROR_UNAUTHORIZED)
         return self
 
-    def check_max_publishers(self):
+    def check_max_publishers(self, display):
+        if display.startswith('video-company-viewer-')
+            return self
+            
         count = 0
         for publisher in self._participants.values():
             count += 1
