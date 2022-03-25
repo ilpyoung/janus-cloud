@@ -16,10 +16,10 @@ requires = [
     'redis==3.5.3'
 ]
 
-setup(name='janus-cloud',
+setup(name='janus-cloud-dym',
       version=januscloud.__version__,
       license='AGPLv3',
-      url='https://github.com/OpenSight/janus-cloud',
+      url='https://github.com/ilpyoung/janus-cloud',
       description='Janus-cloud is a cluster solution for Janus WebRTC server, by API proxy approach',
       long_description=README + '\n\n' + CHANGES,
       long_description_content_type="text/markdown",
@@ -41,9 +41,9 @@ setup(name='janus-cloud',
           "Topic :: Communications :: Internet Phone",
           "Topic :: Internet :: WWW/HTTP",
       ],
-      author='OpenSight',
+      author='OpenSight_fix_dym',
       author_email='public@opensight.cn',
-      keywords='Janus cloud WebRTC',
+      keywords='Janus cloud WebRTC fix dym',
       packages=find_packages(),
       include_package_data=True,
       package_data={
