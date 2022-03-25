@@ -16,7 +16,7 @@ requires = [
     'redis==3.5.3'
 ]
 
-setup(name='janus-cloud-dym',
+setup(name='janus-cloud',
       version=januscloud.__version__,
       license='AGPLv3',
       url='https://github.com/ilpyoung/janus-cloud',
@@ -43,7 +43,7 @@ setup(name='janus-cloud-dym',
       ],
       author='OpenSight_fix_dym',
       author_email='public@opensight.cn',
-      keywords='Janus cloud WebRTC fix dym',
+      keywords='Janus cloud WebRTC fix',
       packages=find_packages(),
       include_package_data=True,
       package_data={
