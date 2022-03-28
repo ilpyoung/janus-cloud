@@ -96,7 +96,7 @@ class Request(object):
     })
 
     def __init__(self, transport_session, message):
-        log.warning("m check to msg yayaya {0} ", message)
+        log.warning("m check to msg yayaya {0} ".format(message))
         message = self.request_schema.validate(message)
         self.transport = transport_session
         self.message = message
