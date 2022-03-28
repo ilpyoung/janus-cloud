@@ -2533,8 +2533,8 @@ class VideoRoomHandle(FrontendHandleBase):
                     configure_params = publisher_configure_schema.validate(body)
                     if jsep:
                         configure_params['jsep'] = jsep
-                    if publisher.sdp == '' and jsep:
-                        publisher.room.check_max_publishers()
+                    # if publisher.sdp == '' and jsep:
+                    #     publisher.room.check_max_publishers()
 
                     reply_jsep = publisher.configure(**configure_params)
 
