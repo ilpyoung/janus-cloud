@@ -1651,7 +1651,8 @@ class VideoRoom(object):
         count = 0
         participant_list = list(self._participants.values())
         for publisher in participant_list:
-            count += 1
+            if publisher.display.startswith('video-company-viewer') == False:
+                count += 1
         if count >= self.publishers:
             raise JanusCloudError('Maximum number of publishers ({}) already reached'.format(self.publishers),
                                   JANUS_VIDEOROOM_ERROR_PUBLISHERS_FULL)
